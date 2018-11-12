@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.yihaodian.architecture</groupId>
+	<artifactId>Hedwig</artifactId>
+	<version>0.3.1-test-SNAPSHOT</version> <!---->
+	<packaging>pom</packaging>
+	<name>Hedwig-parent</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.test.skip>true</maven.test.skip>
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
+		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+
+		<hedwig.version>${project.version}</hedwig.version>
+		<photon.version>0.3.1-test-SNAPSHOT</photon.version>		
+		<hedwig-kamon_2.10.version>0.4.0-SNAPSHOT</hedwig-kamon_2.10.version>
+		<ycc-client.version>2.2.0-SNAPSHOT</ycc-client.version>
+		<detector-monitor-client.version>1.0.6-SNAPSHOT</detector-monitor-client.version>
+		<detector-monitor-common.version>1.0.6-SNAPSHOT</detector-monitor-common.version>
+
+		<akka.version>2.3.9</akka.version>
+		<scala.version>2.10.4</scala.version>
+		<netty.version>3.6.6.Final</netty.version>
+		<hessian.version>3.1.6</hessian.version>
+		<async-http-client.version>1.7.9</async-http-client.version>
+		<cglib.version>2.1_3</cglib.version>
+		<gson.version>2.1</gson.version>
+		<zk.version>3.4.7-SNAPSHOT</zk.version>		
+		<commons-io.version>1.4</commons-io.version>
+
+		<spring.version>2.5.6.SEC02</spring.version>
+		<aopalliance.version>1.0</aopalliance.version>
+		<aspectjrt.version>1.8.1</aspectjrt.version>
+		<servlet-api.version>2.4</servlet-api.version>
+		<jmxtools.version>1.2.1</jmxtools.version>
+
+		<junit.version>4.10</junit.version>
+		<slf4j-api.version>1.6.2</slf4j-api.version>
+		<slf4j-log4j12.version>1.7.5</slf4j-log4j12.version>
+		<log4j.version>1.2.16</log4j.version>
+		<mockserver-common.version>0.0.1-SNAPSHOT</mockserver-common.version>
+		<org.mockito.version>1.7</org.mockito.version>
+
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty</artifactId>
+				<version>${netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j-log4j12.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${servlet-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.caucho</groupId>
+				<artifactId>hessian</artifactId>
+				<version>${hessian.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>aopalliance</groupId>
+				<artifactId>aopalliance</artifactId>
+				<version>${aopalliance.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.yihaodian.configcentre</groupId>
+				<artifactId>ycc-client</artifactId>
+				<version>${ycc-client.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.yihaodian.architecture</groupId>
+				<artifactId>detector-monitor-client</artifactId>
+				<version>${detector-monitor-client.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>com.yihaodian.architecture</groupId>
+				<artifactId>detector-monitor-common</artifactId>
+				<version>${detector-monitor-common.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty</artifactId>
+				<version>${netty.version}</version>
+				<type>bundle</type>
+			</dependency>
+
+			<dependency>
+				<groupId>com.sun.jdmk</groupId>
+				<artifactId>jmxtools</artifactId>
+				<version>${jmxtools.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zk.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${org.mockito.version}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>com.typesafe.akka</groupId>
+				<artifactId>akka-actor_2.10</artifactId>
+				<version>${akka.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.typesafe.akka</groupId>
+				<artifactId>akka-remote_2.10</artifactId>
+				<version>${akka.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.typesafe.akka</groupId>
+				<artifactId>akka-slf4j_2.10</artifactId>
+				<version>${akka.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspectjrt.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>${cglib.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.yhd.arch</groupId>
+				<artifactId>photon</artifactId>
+				<version>${photon.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.yihaodian.architecture</groupId>
+				<artifactId>hedwig-common</artifactId>
+				<version>${hedwig.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.yihaodian.architecture</groupId>
+				<artifactId>hedwig-zk</artifactId>
+				<version>${hedwig.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.yihaodian.architecture</groupId>
+				<artifactId>hedwig-client</artifactId>
+				<version>${hedwig.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.yihaodian.architecture</groupId>
+				<artifactId>hedwig-provider</artifactId>
+				<version>${hedwig.version}</version>
+			</dependency>
+		</dependencies>
+
+
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+					<skipTests>true</skipTests>
+					<testFailureIgnore>false</testFailureIgnore>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- Ignore/Execute plugin execution -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>${lifecycle-mapping.version}</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<!-- copy-dependency plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.keyboardsamurais.maven</groupId>
+										<artifactId>maven-timestamp-plugin</artifactId>
+										<versionRange>[0.0.0,)</versionRange>
+										<goals>
+											<goal>create</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.google.code.maven-svn-revision-number-plugin</groupId>
+										<artifactId>svn-revision-number-maven-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>revision</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<modules>
+		<module>hedwig-zk</module>
+		<module>hedwig-common</module>
+		<module>hedwig-client</module>
+		<module>hedwig-provider</module>
+	</modules>
+	<parent>
+		<groupId>com.yihaodian.public</groupId>
+		<artifactId>public-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+</project>

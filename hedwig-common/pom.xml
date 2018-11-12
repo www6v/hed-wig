@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>Hedwig</artifactId>
+		<groupId>com.yihaodian.architecture</groupId>
+		<version>0.3.1-test-SNAPSHOT</version>  <!--  -->
+	</parent>
+	<artifactId>hedwig-common</artifactId>
+	<name>hedwig-common</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.yihaodian.architecture</groupId>
+			<artifactId>hedwig-zk</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.caucho</groupId>
+			<artifactId>hessian</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.yihaodian.configcentre</groupId>
+			<artifactId>ycc-client</artifactId>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<artifactId>detector-monitor-common</artifactId>
+					<groupId>com.yihaodian.architecture</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.yihaodian.architecture</groupId>
+			<artifactId>detector-monitor-common</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jdmk</groupId>
+			<artifactId>jmxtools</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

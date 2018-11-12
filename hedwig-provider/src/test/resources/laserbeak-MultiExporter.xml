@@ -1,0 +1,388 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean name="photonPropInjector" class="com.yhd.arch.photon.constants.PhotonPropertiesInjector" init-method="inject">
+		<property name="systemProperties">
+			<map>
+				<entry key="akka.remote.endpoint.receiver.count" value="200"></entry>
+				<entry key="photon.endpoint.throttle.enable" value="enable"></entry>
+				<entry key="photon.endpoint.throttle.tps" value="15000" ></entry>
+				<entry key="photon.emmitor.channel.count" value="50" ></entry>
+				<entry key="photon.emmitor.sync.max.channel" value="1000" ></entry>
+				<entry key="photon.emmitor.method.limit" value="800" ></entry>
+				<entry key="photon.tick.duration" value="10" ></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean name="appMeta" class="com.yhd.arch.laserbeak.provider.AppMeta" depends-on="photonPropInjector">
+		<property name="domainName" value="601SOA"></property>
+		<property name="serviceAppName" value="LaserbeakApp"></property>
+		<property name="port" value="8080"></property>
+	</bean>
+
+	<bean name="qs" class="com.yhd.arch.laserbeak.spi.QueryService"/>
+	<bean name="ws" class="com.yhd.arch.laserbeak.spi.WriteService"/>
+	<bean name="rs" class="com.yhd.arch.laserbeak.spi.ReadService"/>
+	
+
+	<bean name="queryService" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="qs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-snapshot"></property>
+
+		<property name="methodWorkerCount" value="32"></property>
+<!-- 		<property name="user" value="u1"></property> -->
+<!-- 		<property name="password" value="p1"></property> -->
+		<property name="initStart" value="true"></property>
+	</bean>
+
+	<bean name="readService" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+
+	<bean name="writeService"
+		class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="ws" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IWriteService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+	</bean>
+	
+	<bean name="readService1" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService2" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService3" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService4" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService5" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService6" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService7" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService8" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService9" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService10" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService11" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService12" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService13" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService14" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService15" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService16" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService17" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService18" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService19" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService20" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService21" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService22" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService23" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService24" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService25" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService26" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService27" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService28" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService29" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService30" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService31" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService32" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService33" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService34" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService35" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	<bean name="readService36" class="com.yhd.arch.laserbeak.provider.SpringServiceExporter">
+		<property name="appMeta" ref="appMeta"></property>
+		<property name="service" ref="rs" />
+		<property name="serviceInterface" value="com.yhd.arch.spi.IReadService" />
+		<property name="serviceVersion" value="0.1-jl"></property>
+
+		<property name="methodWorkerCount" value="50"></property>
+		<property name="initStart" value="true"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+    <bean id="abstractBean"
+          class="com.yhd.arch.laserbeak.client.LaserBeakPojoClientFactory"
+          abstract="true">
+        <property name="domainName" value="601"></property>
+        <property name="serviceAppName" value="archerApp"></property>
+        <property name="serviceVersion" value="0.0.1"></property>
+        <property name="timeout" value="50000"></property>
+        <!-- <property name="chunkedPost" value="false"></property> -->
+        <property name="clientThrottle" value="false"></property>
+        <!-- <property name="groupName" value="testGroup2"></property> -->
+        <property name="autoRedo" value="false"></property>
+        <property name="readTimeout" value="30000"></property>
+        <!-- <property name="user" value="u1"></property> -->
+        <!-- <property name="password" value="p1"></property> -->
+        <!-- <property name="balanceAlgo" value="Broadcast"></property> -->
+    </bean>
+
+    <bean name="readProxy" parent="abstractBean">
+        <property name="serviceInterface" value="com.yihaodian.architecture.test.mockserver.common.IQueryService" />
+        <property name="serviceName" value="mockserver1_queryService1"></property>
+    </bean>
+
+
+
+    <!-- <bean name="writeProxy" parent="abstractBean"> -->
+    <!-- <property name="serviceInterface" value="com.yhd.arch.spi.IWriteService"
+        /> -->
+    <!-- <property name="serviceName" value="writeService"></property> -->
+    <!-- </bean> -->
+</beans>
