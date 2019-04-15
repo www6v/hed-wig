@@ -18,8 +18,3 @@
 * Mimic biological systems
 
 
-### Commiters:
-* [江烈](mailto:jianglie@yhd.com)
-* [王伟](mailto:wangwei@yhd.com)
-* [姚海青](mailto:yaohaiqing@yhd.com)
-* [王本旺](mailto:wangbenwang@yhd.com)
